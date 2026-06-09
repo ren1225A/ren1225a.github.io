@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>理念・方針｜りんぐ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+ 
+  <style>
+    /* ─────────────────────────────
+       リセット・変数
+    ───────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+ 
+    :root {
+      --bg:       #f5f4f0;
+      --bg-sub:   #eeece7;
+      --ink:      #1a1917;
+      --muted:    #5a5955;
+      --border:   #c8c6bf;
+      --pink:     #c0426a;
+      --pink-lt:  #f7e8ed;
+      --pink-mid: #e8a0b8;
+      --serif:    'Noto Serif JP', serif;
+      --sans:     'Noto Sans JP', sans-serif;
+    }
+ 
+    html { scroll-behavior: smooth; }
+ 
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.9;
+      opacity: 0;
+      animation: fadeIn 0.7s 0.1s ease forwards;
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+ 
+    /* ─────────────────────────────
+       ヘッダー
+    ───────────────────────────── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 64px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+ 
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+ 
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--pink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--pink);
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .logo-mark:hover { background: var(--pink-lt); }
+ 
+    .logo-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      letter-spacing: 0.25em;
+      color: var(--ink);
+      display: block;
+      line-height: 1.3;
+    }
+    .logo-sub {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      display: block;
+    }
+    @media (max-width: 480px) { .logo-sub { display: none; } }
+ 
+    .menu-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: border-color 0.2s;
+    }
+    .menu-btn:hover { border-color: var(--pink); }
+    .menu-btn span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: var(--ink);
+      border-radius: 1px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .menu-btn.open span:nth-child(2) { opacity: 0; }
+    .menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+ 
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 198;
+      background: rgba(0,0,0,0.15);
+    }
+    .overlay.show { display: block; }
+ 
+    .drawer {
+      position: fixed;
+      top: 64px; right: 0;
+      width: min(260px, 85vw);
+      background: var(--bg);
+      border-left: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      border-radius: 0 0 0 16px;
+      z-index: 199;
+      transform: translateX(110%);
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+      box-shadow: -4px 4px 20px rgba(0,0,0,0.06);
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer a {
+      display: block;
+      padding: 16px 28px;
+      font-size: 17px;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s, color 0.15s;
+    }
+    .drawer a:last-child { border-bottom: none; }
+    .drawer a:hover { background: var(--pink-lt); color: var(--pink); }
+ 
+    /* ─────────────────────────────
+       メイン共通
+    ───────────────────────────── */
+    main { padding-top: 64px; }
+ 
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 36px;
+    }
+    @media (max-width: 600px) { .wrap { padding: 48px 20px; } }
+ 
+    .sec-label {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sec-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+ 
+    .sep { height: 1px; background: var(--border); }
+ 
+    /* ページタイトル */
+    .page-title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(28px, 5vw, 42px);
+      letter-spacing: 0.15em;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .page-title-line {
+      width: 48px;
+      height: 2px;
+      background: var(--pink);
+      border-radius: 1px;
+      margin-bottom: 48px;
+    }
+ 
+    /* ─────────────────────────────
+       理念ブロック
+    ───────────────────────────── */
+    .block-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--serif);
+      font-size: 13px;
+      color: var(--pink);
+      letter-spacing: 0.2em;
+      border: 1px solid var(--pink-mid);
+      border-radius: 20px;
+      padding: 4px 16px;
+      margin-bottom: 32px;
+    }
+ 
+    /* ツリー図 */
+    .tree-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+ 
+    .tree-root {
+      font-family: var(--serif);
+      font-size: clamp(36px, 6vw, 52px);
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.25em;
+      margin-bottom: 16px;
+    }
+ 
+    .tree-line-v {
+      width: 2px;
+      height: 40px;
+      background: var(--border);
+    }
+ 
+    .tree-branch {
+      display: flex;
+      gap: 32px;
+      position: relative;
+    }
+    .tree-branch::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 60px;
+      right: 60px;
+      height: 2px;
+      background: var(--border);
+    }
+ 
+    .tree-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+ 
+    .tree-node-line {
+      width: 2px;
+      height: 28px;
+      background: var(--border);
+    }
+ 
+    .tree-oval {
+      width: 110px;
+      height: 56px;
+      border: 2px solid var(--pink-mid);
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 22px;
+      color: var(--ink);
+      letter-spacing: 0.1em;
+      background: var(--bg);
+    }
+ 
+    @media (max-width: 480px) {
+      .tree-branch { gap: 16px; }
+      .tree-branch::before { left: 44px; right: 44px; }
+      .tree-oval { width: 88px; height: 48px; font-size: 18px; }
+    }
+ 
+    .rinen-text {
+      font-size: 18px;
+      line-height: 2.2;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+    @media (max-width: 600px) { .rinen-text { font-size: 16px; } }
+ 
+    /* ─────────────────────────────
+       方針ブロック
+    ───────────────────────────── */
+    .hoshin-box {
+      background: var(--bg-sub);
+      border-radius: 16px;
+      padding: 36px 40px;
+    }
+    @media (max-width: 600px) { .hoshin-box { padding: 28px 20px; } }
+ 
+    .hoshin-text {
+      font-size: 17px;
+      line-height: 2.2;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+    }
+ 
+    /* ─────────────────────────────
+       在席数グリッド
+    ───────────────────────────── */
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 640px) {
+      .staff-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+ 
+    .staff-card {
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 12px;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .staff-card:hover { border-color: var(--pink); }
+ 
+    .staff-role {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+ 
+    .staff-num {
+      font-family: var(--serif);
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--pink);
+      line-height: 1;
+    }
+ 
+    .staff-unit {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-top: 6px;
+    }
+ 
+    /* ─────────────────────────────
+       PDFフッター
+    ───────────────────────────── */
+    .pdf-sec {
+      background: var(--bg-sub);
+      border-top: 1px solid var(--border);
+      padding: 48px 36px;
+    }
+    @media (max-width: 600px) { .pdf-sec { padding: 36px 20px; } }
+ 
+    .pdf-inner { max-width: 900px; margin: 0 auto; }
+ 
+    .pdf-title {
+      font-size: 17px;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pdf-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+ 
+    .pdf-list { display: flex; flex-direction: column; gap: 10px; }
+ 
+    .pdf-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 22px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .pdf-item:hover { border-color: var(--pink); background: var(--pink-lt); }
+ 
+    .pdf-badge {
+      font-size: 13px;
+      padding: 3px 8px;
+      border: 1px solid var(--pink-mid);
+      border-radius: 4px;
+      color: var(--pink);
+      flex-shrink: 0;
+    }
+    .pdf-name { font-size: 17px; color: var(--ink); }
+    .pdf-arrow { margin-left: auto; font-size: 20px; color: var(--pink); }
+ 
+    /* ─────────────────────────────
+       フッター
+    ───────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+ 
+  <!-- ヘッダー -->
+  <header>
+    <a class="header-logo" href="splash.html">
+      <div class="logo-mark">輪</div>
+      <div>
+        <span class="logo-name">りんぐ</span>
+        <span class="logo-sub">児童発達支援・放課後等デイサービス</span>
+      </div>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+ 
+  <div class="overlay" id="overlay"></div>
+ 
+  <nav class="drawer" id="drawer">
+    <a href="index.html">りんぐとは</a>
+    <a href="rinen.html">理念・方針</a>
+    <a href="schedule.html">スケジュール</a>
+    <a href="contact.html">問い合わせ</a>
+    <a href="#pdf-sec" class="drawer-pdf-link">自己評価</a>
+  </nav>
+ 
+  <main>
+ 
+    <!-- ページタイトル -->
+    <div class="wrap">
+      <p class="sec-label">PHILOSOPHY</p>
+      <h1 class="page-title">理念・方針</h1>
+      <div class="page-title-line"></div>
+ 
+      <!-- ── 理念 ── -->
+      <div class="block-tag">理念</div>
+ 
+      <!-- ツリー：楽しく → 遊ぶ・学ぶ・生きる -->
+      <div class="tree-wrap">
+        <p class="tree-root">楽しく</p>
+        <div class="tree-line-v"></div>
+        <div class="tree-branch">
+          <div class="tree-node">
+            <div class="tree-node-line"></div>
+            <div class="tree-oval">遊ぶ</div>
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-line"></div>
+            <div class="tree-oval">学ぶ</div>
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-line"></div>
+            <div class="tree-oval">生きる</div>
+          </div>
+        </div>
+      </div>
+ 
+      <p class="rinen-text">
+        これらを基に地域共生社会を目指します。<br>
+        心のコミュニケーション、意思決定の自由など<br>
+        利用者一人一人の個性を尊重します。
+      </p>
+    </div>
+ 
+    <div class="sep"></div>
+ 
+    <!-- ── 方針 ── -->
+    <div class="wrap">
+      <div class="block-tag">方針</div>
+      <div class="hoshin-box">
+        <p class="hoshin-text">
+          利用者の身体及び精神の状況並びに、その置かれている環境に応じて
+          適切かつ効果的な日常生活における基本的な動作の指導、
+          集団生活への適応訓練を行います。<br>
+          <br>
+          利用者の所在する市町村、他の事業所との
+          密接な連携に努めます。
+        </p>
+      </div>
+    </div>
+ 
+    <div class="sep"></div>
+ 
+    <!-- ── 在席数 ── -->
+    <div class="wrap">
+      <div class="block-tag">在席数</div>
+      <div class="staff-grid">
+ 
+        <div class="staff-card">
+          <p class="staff-role">代表者</p>
+          <p class="staff-num">1</p>
+          <p class="staff-unit">名</p>
+        </div>
+ 
+        <div class="staff-card">
+          <p class="staff-role">児発管</p>
+          <p class="staff-num">2</p>
+          <p class="staff-unit">名</p>
+        </div>
+ 
+        <div class="staff-card">
+          <p class="staff-role">管理者</p>
+          <p class="staff-num">2</p>
+          <p class="staff-unit">名</p>
+        </div>
+ 
+        <div class="staff-card">
+          <p class="staff-role">保育士</p>
+          <p class="staff-num">6</p>
+          <p class="staff-unit">名</p>
+        </div>
+ 
+        <div class="staff-card">
+          <p class="staff-role">教員</p>
+          <p class="staff-num">1</p>
+          <p class="staff-unit">名</p>
+        </div>
+ 
+        <div class="staff-card">
+          <p class="staff-role">指導員</p>
+          <p class="staff-num">3</p>
+          <p class="staff-unit">名</p>
+        </div>
+ 
+        <div class="staff-card">
+          <p class="staff-role">児童指導員</p>
+          <p class="staff-num">2</p>
+          <p class="staff-unit">名</p>
+        </div>
+ 
+        <div class="staff-card">
+          <p class="staff-role">理学療法士</p>
+          <p class="staff-num">1</p>
+          <p class="staff-unit">名</p>
+        </div>
+ 
+      </div>
+    </div>
+ 
+  </main>
+ 
+  <!-- PDFフッター -->
+  <div class="pdf-sec" id="pdf-sec">
+    <div class="pdf-inner">
+      <p class="pdf-title">自己評価表</p>
+      <div class="pdf-list">
+        <a class="pdf-item" href="pdf/r7_program.pdf" target="_blank">
+          <span class="pdf-badge">PDF</span>
+          <span class="pdf-name">令和7年　自己評価表（公表）</span>
+          <span class="pdf-arrow">↗</span>
+        </a>
+        <a class="pdf-item" href="pdf/r6_program.pdf" target="_blank">
+          <span class="pdf-badge">PDF</span>
+          <span class="pdf-name">令和7年　自己評価表（事業者用）</span>
+          <span class="pdf-arrow">↗</span>
+        </a>
+        <a class="pdf-item" href="pdf/r5_program.pdf" target="_blank">
+          <span class="pdf-badge">PDF</span>
+          <span class="pdf-name">令和7年　自己評価表（保護者用）</span>
+          <span class="pdf-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+ 
+  <footer>
+    © 2025 放課後等デイサービス・児童発達支援 りんぐ　愛媛県今治市
+  </footer>
+ 
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const drawer  = document.getElementById('drawer');
+    const overlay = document.getElementById('overlay');
+ 
+    function openMenu() {
+      drawer.classList.add('open');
+      menuBtn.classList.add('open');
+      overlay.classList.add('show');
+    }
+    function closeMenu() {
+      drawer.classList.remove('open');
+      menuBtn.classList.remove('open');
+      overlay.classList.remove('show');
+    }
+ 
+    menuBtn.addEventListener('click', () => {
+      drawer.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    overlay.addEventListener('click', closeMenu);
+ 
+    // 支援プログラム・自己評価 → ページ下部PDFセクションへスクロール
+    document.querySelectorAll('.drawer-pdf-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeMenu();
+        setTimeout(() => {
+          document.getElementById('pdf-sec').scrollIntoView({ behavior: 'smooth' });
+        }, 350);
+      });
+    });
+ 
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  </script>
+ 
+</body>
+</html>

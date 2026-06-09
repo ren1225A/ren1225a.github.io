@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>株式会社サンショウ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+ 
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    :root {
+      --bg:    #f5f4f0;
+      --ink:   #1a1917;
+      --muted: #5a5955;
+      --serif: 'Noto Serif JP', serif;
+      --sans:  'Noto Sans JP', sans-serif;
+    }
+ 
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+ 
+    body {
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+ 
+    /* ── スプラッシュ全体 ── */
+    .splash {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      animation: splashLife 5.0s ease forwards;
+    }
+ 
+    @keyframes splashLife {
+      0%   { opacity: 0; }
+      15%  { opacity: 1; }
+      78%  { opacity: 1; }
+      100% { opacity: 0; }
+    }
+ 
+    /* ── ロゴマーク（三つの円） ── */
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      animation: markIn 1.0s 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+ 
+    @keyframes markIn {
+      0%   { opacity: 0; transform: scale(0.75); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+ 
+    .mark-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+    .mark-circle:nth-child(1) { opacity: 0.25; transform: scale(0.85); }
+    .mark-circle:nth-child(2) { opacity: 0.60; }
+    .mark-circle:nth-child(3) { opacity: 0.25; transform: scale(0.85); }
+ 
+    /* ── テキスト ── */
+    .logo-text {
+      text-align: center;
+      opacity: 0;
+      animation: textIn 0.9s 0.8s ease forwards;
+    }
+ 
+    @keyframes textIn {
+      0%   { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+ 
+    .company-name-en {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: clamp(11px, 2vw, 14px);
+      color: var(--muted);
+      letter-spacing: 0.35em;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+ 
+    .company-name-ja {
+      font-family: var(--serif);
+      font-weight: 200;
+      font-size: clamp(28px, 6vw, 46px);
+      color: var(--ink);
+      letter-spacing: 0.4em;
+      line-height: 1.2;
+    }
+ 
+    /* ── 区切り線 ── */
+    .divider {
+      width: 0;
+      height: 1px;
+      background: #c8c6bf;
+      animation: lineGrow 0.8s 1.2s ease forwards;
+    }
+ 
+    @keyframes lineGrow {
+      0%   { width: 0; }
+      100% { width: 56px; }
+    }
+ 
+    /* ── サブテキスト ── */
+    .sub-text {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: clamp(11px, 2vw, 13px);
+      color: var(--muted);
+      letter-spacing: 0.2em;
+      text-align: center;
+      line-height: 1.9;
+      opacity: 0;
+      animation: textIn 0.8s 1.4s ease forwards;
+    }
+  </style>
+</head>
+<body>
+ 
+  <div class="splash">
+ 
+    <!-- ロゴマーク（三つの丸） -->
+    <div class="logo-mark">
+      <div class="mark-circle"></div>
+      <div class="mark-circle"></div>
+      <div class="mark-circle"></div>
+    </div>
+ 
+    <!-- 社名 -->
+    <div class="logo-text">
+      <p class="company-name-en">SANSHO </p>
+      <p class="company-name-ja">株式会社<br>サンショウ</p>
+    </div>
+ 
+    <!-- 区切り線 -->
+    <div class="divider"></div>
+ 
+    <!-- サブテキスト -->
+    <p class="sub-text">人と地域をつなぐ</p>
+ 
+  </div>
+ 
+  <script>
+    // アニメーション終了後に施設選択画面へ遷移
+    setTimeout(() => {
+      window.location.href = 'splash.html';
+    }, 5100);
+  </script>
+ 
+</body>
+</html>
