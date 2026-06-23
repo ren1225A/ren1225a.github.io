@@ -325,6 +325,95 @@
     }
  
     /* ─────────────────────────────
+       支援内容ブロック
+    ───────────────────────────── */
+    .shien-intro {
+      font-size: 17px;
+      line-height: 2.0;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+      margin-bottom: 36px;
+    }
+ 
+    .domain-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+ 
+    .domain-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+ 
+    .domain-head {
+      padding: 16px 24px;
+      background: var(--pink-lt);
+      border-bottom: 1px solid var(--pink-mid);
+    }
+ 
+    .domain-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--pink);
+    }
+ 
+    .domain-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 700px) {
+      .domain-body { grid-template-columns: 1fr; }
+    }
+ 
+    .domain-col {
+      padding: 20px 24px;
+    }
+    .domain-col + .domain-col {
+      border-left: 1px solid var(--border);
+    }
+    @media (max-width: 700px) {
+      .domain-col + .domain-col {
+        border-left: none;
+        border-top: 1px solid var(--border);
+      }
+    }
+ 
+    .domain-col-label {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+ 
+    .domain-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+ 
+    .domain-items li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--ink);
+      padding-left: 16px;
+      position: relative;
+    }
+    .domain-items li::before {
+      content: '○';
+      position: absolute;
+      left: 0;
+      color: var(--pink-mid);
+      font-size: 11px;
+      top: 4px;
+    }
+ 
+    /* ─────────────────────────────
        在席数グリッド
     ───────────────────────────── */
     .staff-grid {
@@ -511,6 +600,147 @@
           利用者の所在する市町村、他の事業所との
           密接な連携に努めます。
         </p>
+      </div>
+    </div>
+ 
+    <div class="sep"></div>
+ 
+    <!-- ── 支援内容 ── -->
+    <div class="wrap">
+      <div class="block-tag">支援内容</div>
+      <p class="shien-intro">5領域に沿って支援を計画、実施していきます。</p>
+ 
+      <div class="domain-list">
+ 
+        <!-- 健康・生活 -->
+        <div class="domain-card">
+          <div class="domain-head">
+            <p class="domain-title">健康・生活</p>
+          </div>
+          <div class="domain-body">
+            <div class="domain-col">
+              <p class="domain-col-label">児童発達支援</p>
+              <ul class="domain-items">
+                <li>ADL動作獲得</li>
+                <li>睡眠時間の確保</li>
+                <li>生活リズムの確立</li>
+              </ul>
+            </div>
+            <div class="domain-col">
+              <p class="domain-col-label">放課後等デイ</p>
+              <ul class="domain-items">
+                <li>ADL動作の自立</li>
+                <li>IADL（買い物や掃除、管理など）</li>
+                <li>健康管理</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- 運動・感覚 -->
+        <div class="domain-card">
+          <div class="domain-head">
+            <p class="domain-title">運動・感覚</p>
+          </div>
+          <div class="domain-body">
+            <div class="domain-col">
+              <p class="domain-col-label">児童発達支援</p>
+              <ul class="domain-items">
+                <li>粗大・微細運動の発達</li>
+                <li>感覚統合の向上</li>
+              </ul>
+            </div>
+            <div class="domain-col">
+              <p class="domain-col-label">放課後等デイ</p>
+              <ul class="domain-items">
+                <li>体力づくり</li>
+                <li>スポーツ活動</li>
+                <li>感覚特性への支援</li>
+                <li>アジリティー</li>
+                <li>協調運動</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- 認知・行動 -->
+        <div class="domain-card">
+          <div class="domain-head">
+            <p class="domain-title">認知・行動</p>
+          </div>
+          <div class="domain-body">
+            <div class="domain-col">
+              <p class="domain-col-label">児童発達支援</p>
+              <ul class="domain-items">
+                <li>色や形</li>
+                <li>数の理解</li>
+                <li>ルールの理解</li>
+                <li>見通しの練習</li>
+            </div>
+            <div class="domain-col">
+              <p class="domain-col-label">放課後等デイ</p>
+              <ul class="domain-items">
+                <li>学習支援</li>
+                <li>計画性や問題解決</li>
+                <li>マナーの理解</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- 言語・コミュニケーション -->
+        <div class="domain-card">
+          <div class="domain-head">
+            <p class="domain-title">言語・コミュニケーション</p>
+          </div>
+          <div class="domain-body">
+            <div class="domain-col">
+              <p class="domain-col-label">児童発達支援</p>
+              <ul class="domain-items">
+                <li>言語理解と表出</li>
+                <li>要求や気持ちの表出</li>
+                <li>絵カードを活用したコミュニケーション</li>
+              </ul>
+            </div>
+            <div class="domain-col">
+              <p class="domain-col-label">放課後等デイ</p>
+              <ul class="domain-items">
+                <li>会話スキルの向上</li>
+                <li>相手の気持ちを考える</li>
+                <li>報告・連絡・相談の練習</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- 人間関係・社会性 -->
+        <div class="domain-card">
+          <div class="domain-head">
+            <p class="domain-title">人間関係・社会性</p>
+          </div>
+          <div class="domain-body">
+            <div class="domain-col">
+              <p class="domain-col-label">児童発達支援</p>
+              <ul class="domain-items">
+                <li>友達との関わり</li>
+                <li>感情の調整</li>
+                <li>順番を待つ</li>
+                <li>集団への参加</li>
+              </ul>
+            </div>
+            <div class="domain-col">
+              <p class="domain-col-label">放課後等デイ</p>
+              <ul class="domain-items">
+                <li>集団活動</li>
+                <li>協力活動</li>
+                <li>SST</li>
+                <li>地域活動への参加</li>
+                <li>社会参加に向けた支援</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
       </div>
     </div>
  
